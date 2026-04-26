@@ -76,9 +76,10 @@ jobs:
           key: ${{ steps.cache-restore.outputs.cache-primary-key }}
       - name: Deploy with rclone
         run: |
+          RCLONE_SFTP_PASS="$(rclone obscure "${{ secrets.SFTP_PASSWORD }}")"
           rclone sync ./public :sftp:${{ secrets.SFTP_TARGET_DIR }} \
             --sftp-host=${{ secrets.SFTP_HOST }} \
             --sftp-user=${{ secrets.SFTP_USERNAME }} \
-            --sftp-pass=${{ secrets.SFTP_PASSWORD }} \
+            --sftp-pass="$RCLONE_SFTP_PASS" \
             --exclude "/vtour/**" \
             --stats 1s
