@@ -1,0 +1,30 @@
+.footer {
+    
+    .footer-nav {
+        padding: 0;
+        list-style: none;
+
+        @media (min-width: 50ch) {
+            --item-align: block-start;
+        }
+
+        &__item {
+            text-align: var(--item-align, center);
+        }
+    
+        &__link {
+            line-height: 2;
+            color: var(--light-bg-color);
+            text-decoration: none;
+            transition: color 300ms linear;
+
+            &:is(:hover, :focus-visible) {
+                color: var(--link-color-light);
+            }
+    
+            &--active {
+                color: var(--link-color);
+            }
+        }
+    }
+}

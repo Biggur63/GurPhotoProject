@@ -1,0 +1,108 @@
+.form {
+
+    &__title {
+        margin-block: var(--main-gap);
+    }
+
+    &__label {position: relative;
+        display: block;
+        margin-block-end: var(--block-gap);
+        margin-block-end: calc(var(--main-gap) * 1.5);
+
+        &:has(*:required) > span::after {
+            content: "*";
+            vertical-align: super;
+            color: var(--accent-color-dark);
+        }
+    }
+
+    &__input {
+        display: block;
+        min-width: 100%;
+        font: inherit;
+        padding-block: calc(var(--main-gap) / 4);
+        padding-inline: calc(var(--main-gap) / 2);
+        border: 1px solid var(--accent-color-dark);
+        border-radius: var(--border-radius);
+        
+        &[type="checkbox"] {
+            display: inline-block;
+            min-width: auto;
+            margin-inline-end: var(--main-gap);
+            accent-color: var(--accent-color);
+            transform: scale(1.8);
+            transform-origin: left;
+        }
+        
+        &[aria-invalid='false'] {
+            box-shadow: inset 0 0 calc(var(--main-gap) /2) var(--accent-color);
+        }
+        
+        &[aria-invalid='true'] {
+            box-shadow: inset 0 0 calc(var(--main-gap) /2) var(--warning-color);
+        }
+    }
+
+    &__err-msg {
+        position: absolute;
+        bottom: -1.6rem;
+        padding-inline: calc(var(--main-gap) / 2);
+        font-size: var(--fs-200);
+        color: var(--warning-color);
+    }
+    
+    &__btn {
+        display: grid;
+        place-content: center;
+        min-width: 18rem;
+        min-height: 3rem;
+        margin-inline: auto;
+        padding: .3em 2.5em;
+        font: inherit;
+        background-color: var(--accent-color);
+        border: none;
+        border-radius: var(--border-radius);
+        transition: background-color 300ms;
+
+        &:is(:hover, :focus-visible) {
+            background-color: var(--link-color-light);
+        }
+
+        & > .loader {
+            --colorM: var(--link-color);
+            --colorD: var(--link-color-dark);
+
+            // display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: var(--colorM);
+            box-shadow:
+                var(--block-gap) 0 var(--colorM),
+                calc(var(--block-gap) * -1) 0 var(--colorD);
+            animation: loader 2s ease-in-out infinite;
+        }
+
+        @keyframes loader {
+            0%, 100% {
+                background-color: var(--colorM);
+                box-shadow:
+                    var(--block-gap) 0 var(--colorM),
+                    calc(var(--block-gap) * -1) 0 var(--colorD);
+            }
+            33% {
+                background-color: var(--colorD);
+                box-shadow:
+                    var(--block-gap) 0 var(--colorM),
+                    calc(var(--block-gap) * -1) 0 var(--colorM);
+            }
+            66% {
+                background-color: var(--colorM);
+                box-shadow:
+                    var(--block-gap) 0 var(--colorD),
+                    calc(var(--block-gap) * -1) 0 var(--colorM);
+            }
+            
+        }
+    }
+}

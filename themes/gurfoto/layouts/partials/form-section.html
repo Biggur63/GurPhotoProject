@@ -1,0 +1,63 @@
+{{- $headless := site.GetPage "/headless" }}
+{{- with $headless.Resources.GetMatch .  }}
+<section class="form">
+    <h3 class="form__title">{{ .Title }}</h3>
+    <form class="form__form" action="">
+        {{- range sort .Params.Form "weight" }}
+        <label class="form__label">
+            {{- if eq .type "textarea" }}
+            <span>{{ .label | markdownify }}</span>
+            <textarea class="form__input"
+            name="{{ .name }}"
+            type="textarea"
+            rows="5"
+            {{- with .autocomplete }} autocomplete="{{ . }}"{{ end}}
+            {{- with .placeholder }} placeholder="{{ . }}"{{ end}}
+            {{- with .minlength }} minlength="{{ . }}"{{ end}}
+            {{- with .maxlength }} maxlength="{{ . }}"{{ end}}
+            {{- if .req }} required{{ end }}
+            ></textarea>
+            {{ else if eq .type "checkbox" }}
+            <input class="form__input"
+                type="checkbox" name="{{ .name }}"
+                {{ if .req }} required{{ end }}
+            >
+            <span>{{ .label | markdownify }}</span>
+            {{ else }}
+            <span>{{ .label | markdownify }}</span>
+            <input class="form__input"
+                name="{{ .name }}"
+                type="{{with .type }}{{ . }}{{ else }}text{{ end }}"
+                {{- with .autocomplete }} autocomplete="{{ . }}"{{ end }}
+                {{- with .placeholder }} placeholder="{{ . }}"{{ end }}
+                {{- with .minlength }} minlength="{{ . }}"{{ end }}
+                {{- with .maxlength }} maxlength="{{ . }}"{{ end }}
+                {{- with .pattern }} pattern="{{ . }}"{{ end }}
+                {{- with .title }} title="{{ . }}"{{ end }}
+                {{- if .req }} required{{ end }}
+            >
+            {{ end }}
+            <div class="form__err-msg" id="form-{{ .name }}-err-msg" hidden>
+                {{- .errorMsg | markdownify -}}
+            </div>
+        </label>
+        {{- end }}
+        <button class="form__btn" type="submit">
+            <span class="label">{{ .Params.SendBtn.Text }}</span>
+            <span class="loader" hidden></span>
+        </button>
+        <dialog class="form__succsses-dialog sdialog">
+            <h2 class="sdialog__title">{{ .Params.succssesDialog.title }}</h2>
+            <p>{{ .Params.succssesDialog.content }}</p>
+            <p>{{ .Params.succssesDialog.thanks }}</p>
+            <button class="sdialog__close-btn" aria-label="Close dialog">╳</button>
+        </dialog>
+        <dialog class="form__error-dialog sdialog">
+            <h2 class="sdialog__title">{{ .Params.errorDialog.title }}</h2>
+            <p>{{ .Params.succssesDialog.content }}</p>
+            <p>{{ .Params.succssesDialog.thanks }}</p>
+            <button class="sdialog__close-btn" aria-label="Close dialog">╳</button>
+        </dialog>
+    </form>
+</section>
+{{ end }}

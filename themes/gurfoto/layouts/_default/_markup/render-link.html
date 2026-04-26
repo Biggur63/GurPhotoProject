@@ -1,0 +1,10 @@
+{{- $ext := or 
+        (strings.HasPrefix .Destination "http")
+        (strings.HasPrefix .Destination "mailto")
+-}}
+<a href="{{ .Destination | safeURL }}" 
+    {{- with .Title }} title="{{ . }}"{{ end -}}
+    {{- if $ext -}} target="_blank" rel="noopener noreferrer"{{ end -}}
+    >
+    {{- .Text | safeHTML -}}
+</a>

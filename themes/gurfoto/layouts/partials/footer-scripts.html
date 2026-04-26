@@ -1,0 +1,19 @@
+{{- $jsParams := dict "isProduction" hugo.IsProduction }}
+{{- $buildOptions := dict "target" "es2020" "params" $jsParams }}
+
+{{- $footerScript := resources.Get "js/footer-script.js" | js.Build $buildOptions -}}
+{{- $galleryScript := resources.Get "js/gallery-script.js" | js.Build $buildOptions -}}
+{{- $panoGalleryScript := resources.Get "js/pano-gallery-script.js" | js.Build $buildOptions -}}
+
+{{- if not hugo.IsServer }}
+  {{ $footerScript = $footerScript | minify | fingerprint -}}
+  {{ $galleryScript = $galleryScript | minify | fingerprint -}}
+{{- end -}}
+
+<script defer src="{{ $footerScript.RelPermalink }}"></script>
+{{- if .Page.Store.Get "sc-gallery" }}
+<script defer src="{{ $galleryScript.RelPermalink }}"></script>
+{{- end }}
+{{- if .Page.Store.Get "sc-pano-gallery" }}
+<script defer src="{{ $panoGalleryScript.RelPermalink }}"></script>
+{{- end }}

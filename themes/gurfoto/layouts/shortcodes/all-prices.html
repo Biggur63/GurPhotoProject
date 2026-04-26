@@ -1,0 +1,11 @@
+{{- $allPrices := slice }}
+
+{{- range index site.Menus "service" }}
+    {{- with .Page.Params.price }}
+        {{- $headless := site.GetPage "/headless" }}
+        {{- with $headless.Resources.GetMatch . }}
+        {{- $allPrices = $allPrices | append .Params.Price }}
+        {{- end }}
+    {{- end }}
+{{- end }}
+{{ partial "price-list.html" $allPrices }}

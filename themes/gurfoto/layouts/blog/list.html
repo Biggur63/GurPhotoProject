@@ -1,0 +1,25 @@
+{{ define "main" }}
+<div class="width-wrapper">
+    <div class="list">
+        <main id="main-content" class="list__main">
+            <article class="list-content">
+                {{ partial "page-header" . }}
+                {{ .Content }}
+                <ul class="list-content__list">
+                    {{ range .RegularPages }}
+                    {{ $pageDate := .Date.Format "2006-01-02" }}
+                    <li class="list-content__item">
+                        <a href="{{ .RelPermalink }}" rel="bookmark">{{ .Title }}</a> 
+                        <span> | </span>
+                        <time datetime="{{ $pageDate }}">{{ $pageDate }}</time>
+                    </li>
+                    {{ end }}
+                </ul>
+            </article>
+        </main>
+        <aside class="list__aside">
+            {{ partial "homepage/services" . }}
+        </aside>
+    </div>
+</div>
+{{ end }}

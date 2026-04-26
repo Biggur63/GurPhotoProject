@@ -1,0 +1,25 @@
+.single {
+    position: relative;
+    margin-block-start: var(--block-gap);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--block-gap);
+
+    &__main {
+        flex: 1 1 48ch;
+    }
+    
+    &__aside {
+        flex: 1;
+        
+        .stk {
+            position: sticky;
+            top: var(--main-gap);
+            // z-index: 10;
+            max-height: 100vh;
+            margin-inline: calc(var(--main-gap) * -1);
+            padding-inline: var(--main-gap);
+            overflow-y: auto;
+        }
+    }
+}

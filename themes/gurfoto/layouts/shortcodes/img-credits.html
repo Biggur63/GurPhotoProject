@@ -1,0 +1,14 @@
+<section>
+    <h3>Bildquellen</h3>
+    <ul role ="list">
+        {{- range site.AllPages }}
+        {{- if .Params.cover_img_credits }}
+        <li>
+            On page
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            — {{ .Params.cover_img_credits | markdownify }}
+        </li>
+        {{- end }}
+        {{- end }}
+    </ul>
+</section>

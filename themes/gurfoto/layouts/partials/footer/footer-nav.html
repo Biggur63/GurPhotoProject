@@ -1,0 +1,26 @@
+<ul class="footer-nav">
+    {{- $menuName := . -}}
+    {{ range index site.Menus . }}
+    {{- $active := page.IsMenuCurrent $menuName . }}
+    <li class="footer-nav__item">
+        <a class="footer-nav__link{{ if $active }} footer-nav__link--active{{ end }}"
+            href="{{ .URL }}">
+            {{- .Name -}}
+        </a>
+    </li>
+    {{- end }}
+    {{- range $i, $page := index site.Menus . }}
+        {{- with $page.Page.Params.price }}
+            {{- $headless := site.GetPage "/headless" }}
+            {{- with $headless.Resources.GetMatch . }}
+            <li class="footer-nav__item">
+                {{- with .Params.NavText }}
+                <a class="footer-nav__link" href='{{ path.Join $page.URL "/#price" }}'>
+                    {{- . -}}    
+                </a>
+                {{- end }}
+            </li>
+            {{- end }}
+        {{- end }}
+    {{- end }}
+</ul>

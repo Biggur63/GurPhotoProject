@@ -1,0 +1,44 @@
+{{- .Page.Store.Set "sc-pano-gallery" true }}
+{{- $galName := .Get 0 }}
+{{- $gal := slice }}
+{{- $colWidth := default 280 (.Get 1) }}
+{{- $imgWidth := replaceRE "[^0-9]+" "" $colWidth }}
+{{- $imgWidth = cast.ToInt $imgWidth }}
+{{- $imgWidth = mul $imgWidth 1.5 }}
+{{- $imgWidth = add $imgWidth 8 }}
+{{- $imgHeight := mul $imgWidth 0.5625 }}
+
+{{- with $.Page.Param ($galName) }}
+    {{- range . }}
+        {{- $itemImg := resources.Get (path.Join "images" .file) -}}
+        {{- if $itemImg }}
+            {{- $thumbImg := $itemImg.Fill (printf "%.0fx%.0f webp q72" $imgWidth $imgHeight) }}
+            {{- $gal = $gal | append (dict
+                "thumbLink" $thumbImg.RelPermalink
+                "alt" .alt
+                "iframeSrc" .iframeSrc
+            ) }}
+        {{- end }}
+    {{- end }}
+{{- else }}
+    {{- errorf "Gallery %q not found" $galName }}
+{{- end }}
+
+{{- if gt (len $gal) 0 }}
+<ul class="sc-gallery" role="list" {{- with $colWidth}}
+    style="--min-col-width: {{ . }}px" {{ end -}}>
+    {{- range $gal }}
+    <li class="sc-gallery__item">
+        <img src="{{ .thumbLink }}" alt="{{ .alt }}" data-iframesrc="{{ .iframeSrc }}">
+    </li>
+    {{- end }}
+</ul>
+{{- end }}
+
+<dialog class="gallery-dialog">
+    <iframe
+        src=""
+        style="border:0;" allowfullscreen=""
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <button aria-label="Close" class="gallery-dialog__close">✕</button>
+</dialog>

@@ -1,0 +1,25 @@
+<div class="footer__legal">
+    <div class="width-wrapper">
+        <div class="footer__legal-inner">
+            <div class="footer__copyright">
+                Copyright {{ now.Format "2006" }} ©
+            </div>
+            <div class="footer__legal-menu">
+                {{- with site.Menus.legal}}
+                <ul class="legal-nav">
+                    {{- range . }}
+                    {{- $active := page.IsMenuCurrent "legal" . }}
+                    <li class="legal-nav__item">
+                        <a  class="legal-nav__link
+                        {{- if $active }} legal-nav__link--active{{ end }}"
+                        href="{{ .URL }}">
+                        {{- .Name -}}
+                        </a>
+                    </li>
+                    {{- end }}
+                </ul>
+                {{- end }}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+{{ $page := . }}
+<section class="services{{ if not $page.IsHome }} services--aside{{ end }}">
+    {{ if $page.IsHome }}
+    <div class="width-wrapper">
+        <div class="sevices__block">
+    {{ end }}
+            <h2 class="services__title">Разделы</h2>
+            <ul class="services__list">
+                {{- range .Site.Menus.service -}}
+                {{- if not ($page.IsMenuCurrent "service" .) }}
+                {{- $scardBg := .Page.Resources.GetMatch .Page.Params.cover_img }}
+                <li class="services__item">
+                    {{- if $scardBg }}
+                    {{- $scardBg = $scardBg.Resize "320x webp q68" }}
+                    <a href="{{ .URL }}"
+                        class="scard scard--bg"
+                        style="--scard-bg: url('{{ $scardBg.RelPermalink }}')">
+                    {{- else }}    
+                    <a href="{{ .URL }}" class="scard">
+                    {{- end }}
+                        <h3 class="scard__title">{{ .Name }}</h3>
+                        <div class="scard__content">
+                            {{- with .Page.Description }}
+                            {{ . }}
+                            {{- else }}
+                            {{ .Page.Summary | plainify}}
+                            {{- end }}
+                        </div>
+                    </a>
+                </li>
+                {{- end }}
+                {{- end }}
+            </ul>
+    {{- if $page.IsHome }}
+        </div>
+    </div>
+    {{- end }}
+</section>

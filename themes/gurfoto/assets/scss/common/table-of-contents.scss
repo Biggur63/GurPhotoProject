@@ -1,0 +1,30 @@
+#TableOfContents {
+    margin-block: var(--main-gap);
+    margin-inline: auto;
+
+    & > ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: var(--main-gap);
+        column-gap: calc(var(--main-gap) / 1.5);
+
+        & > li {
+
+            & > a {
+                display: block;
+                background-color: var(--dark-bg-color-light);
+                border-radius: var(--border-radius);
+                padding: calc(var(--main-gap) / 2);
+                font-family: var(--ff-accent);
+                font-size: 1.2rem;
+                line-height: 1;
+                text-decoration: none;
+                color: var(--light-text-color);
+            }
+        }
+    }
+}

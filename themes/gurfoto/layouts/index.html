@@ -1,0 +1,27 @@
+{{ define "main" }}
+<main id="main-content" class="main">
+    {{ partial "homepage/hero" . }}
+    <div class="width-wrapper">
+        <article class="content content--index">
+            <h1>{{ .Title }}</h1>
+            {{ .Content }}
+        </article>
+    </div>
+    {{ partial "homepage/services" . }}
+    {{ with .Params.infoSection }}
+        {{ $headless := site.GetPage "/headless" }}
+        {{ with $headless.Resources.GetMatch . }}
+        <div class="width-wrapper">
+            <article class="content">
+                <h2>{{ .Title }}</h2>
+                {{ .Content }}
+            </article>
+        </div>
+        <hr>
+        {{ end }}
+    {{ end }}
+</main>
+<aside>
+    {{ partial "homepage/blog" . }}
+</aside>
+{{ end }}

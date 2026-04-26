@@ -1,0 +1,71 @@
+{{- .Page.Store.Set "sc-gallery" true }}
+{{- $galName := .Get 0 }}
+{{- $gal := slice }}
+{{- $colWidth := .Get 1}}
+{{- $imgWidth := default 240 (replaceRE "[^0-9]+" "" $colWidth) }}
+{{- $imgWidth = cast.ToInt $imgWidth }}
+{{- $imgWidth = mul $imgWidth 1.5 }}
+{{- $imgWidth = add $imgWidth 8 }}
+
+{{- with $.Page.Param ($galName) }}
+{{- range . }}
+{{- $itemImg := resources.Get (path.Join "images" .file) -}}
+{{- if $itemImg }}
+{{- $anchor := default "Smart" .anchor}}
+{{- $thumbImg := $itemImg.Fill (printf "%.0fx%.0f webp q70 %s" $imgWidth $imgWidth $anchor) }}
+{{- $largeImg := $itemImg -}}
+{{- $mediumImg := $itemImg -}}
+{{- $smallImg := $itemImg -}}
+{{- if gt $itemImg.Width 1600 }}
+{{- $largeImg = $itemImg.Resize "1600x webp q80" }}
+{{- else }}
+{{- $largeImg = $itemImg.Resize (printf "%dx webp q80" $itemImg.Width) }}
+{{- end }}
+{{- if gt $itemImg.Width 960 }}
+{{- $mediumImg = $itemImg.Resize "960x webp q76" }}
+{{- else }}
+{{- $mediumImg = $largeImg }}
+{{- end }}
+{{- if gt $itemImg.Width 640 }}
+{{- $smallImg = $itemImg.Resize "640x webp q72" }}
+{{- else }}
+{{- $smallImg = $mediumImg }}
+{{- end }}
+{{- $gal = $gal | append (dict
+"thumbLink" $thumbImg.RelPermalink
+"largeLink" $largeImg.RelPermalink
+"mediumLink" $mediumImg.RelPermalink
+"smallLink" $smallImg.RelPermalink
+"legacyLink" $itemImg.RelPermalink
+"alt" .alt
+) }}
+{{- end }}
+{{- end }}
+{{- else }}
+{{- errorf "Gallery %q not found" $galName }}
+{{- end }}
+
+{{- if gt (len $gal) 0 }}
+<ul class="sc-gallery" role="list" {{- with $colWidth}}
+    style="--min-col-width: {{ . }}" {{ end -}}>
+    {{- range $gal }}
+    <li class="sc-gallery__item">
+        <img src="{{ .thumbLink }}" alt="{{ .alt }}"
+            data-largeLink="{{ .largeLink }}"
+            data-mediumLink="{{ .mediumLink }}"
+            data-smallLink="{{ .smallLink }}"
+            data-legacyLink="{{ .legacyLink }}">
+    </li>
+    {{- end }}
+</ul>
+{{- end }}
+
+<dialog class="gallery-dialog">
+    <picture>
+        <source id="largeImg" media="(min-width: 1240px)">
+        <source id="mediumImg" media="(min-width: 840px)">
+        <source id="smallImg">
+        <img id="legacyImg">
+    </picture>
+    <button aria-label="Close" class="gallery-dialog__close">✕</button>
+</dialog>

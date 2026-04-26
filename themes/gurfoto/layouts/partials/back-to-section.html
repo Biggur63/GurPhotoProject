@@ -1,0 +1,5 @@
+{{ if not (.Parent.IsHome) -}}
+    <a class="page-header__link" href="{{ .Parent.RelPermalink }}">
+        ⇐ {{ .Parent.Name -}}
+    </a>
+{{- end }}

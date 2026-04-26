@@ -1,0 +1,63 @@
+:root, ::backdrop {
+    /* Colors */
+    --accent-hue: 101; // 101
+    --accent-sat: 0%; //58%
+    
+    --bg-hue: 94; // 94
+    --bg-light-sat: 0%; // 73%
+    --bg-dark-sat: 0%; // 11%
+
+    --link-hue: 240; // 240
+    --link-sat: 0%; // 33%
+
+    --light-text-color: hsl(0 0% 98%);
+    --dark-text-color: hsl(0 0% 20%);
+
+    --accent-color-night: hsl(var(--accent-hue) var(--accent-sat) 16%);
+    --accent-color-dark: hsl(var(--accent-hue) var(--accent-sat) 26%);
+    --accent-color: hsl(var(--accent-hue) var(--accent-sat) 46%);
+    --accent-color-light: hsl(var(--accent-hue) var(--accent-sat) 66%);
+    
+    --warning-color: hsl(348 56% 47%);
+    
+    --dark-bg-color-dark: hsl(var(--bg-hue) var(--bg-dark-sat) 6%);
+    --dark-bg-color: hsl(var(--bg-hue) var(--bg-dark-sat) 26%);
+    --dark-bg-color-light: hsl(var(--bg-hue) var(--bg-dark-sat) 46%);
+    
+    --light-bg-color-dark: hsl(var(--bg-hue) var(--bg-light-sat) 78%);
+    --light-bg-color: hsl(var(--bg-hue) var(--bg-light-sat), 97%);
+    --light-bg-color-light: hsl(var(--bg-hue) var(--bg-light-sat) 100%);
+
+    --link-color-dark: hsl(var(--link-hue) var(--link-sat) 50%);
+    --link-color: hsl(var(--link-hue) var(--link-sat) 70%);
+    --link-color-light: hsl(var(--link-hue) var(--link-sat) 90%);
+
+    --dark-bg-gradient: radial-gradient(
+        farthest-corner circle at 9% 73%, hsl(var(--bg-hue) var(--bg-dark-sat) 26%) 5% 5%, 89%, hsl(var(--bg-hue) var(--bg-dark-sat) 46%) 100%
+    );
+    
+    --box-shadow:
+        0 1px 2px hsl(var(--bg-hue) var(--bg-dark-sat) 25% / 30%),
+        0 1px 3px hsl(var(--bg-hue) var(--bg-dark-sat) 25% / 15%);
+
+    --border-radius: 0.2rem;
+
+    // --ff-main: "Exo", Arial, Helvetica, sans-serif;
+    --ff-main: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    // --ff-accent: "Courier New", Courier, monospace;
+    --ff-accent: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --ff-mono: "Courier New", Courier, monospace;
+    
+    /* font-sizes */
+    --fs-800: 3.5rem;
+    --fs-700: 1.5rem;
+    --fs-600: 1.2rem;
+    --fs-500: 1.1rem;
+    --fs-400: 1rem;
+    --fs-300: 0.9375rem;
+    --fs-200: 0.875rem;
+
+    /* paddings, margins, gaps */
+    --main-gap: clamp(.7rem, calc(.5rem + 1vw), 1rem);
+    --block-gap: calc(var(--main-gap) * 2)
+}

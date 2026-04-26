@@ -1,0 +1,26 @@
+.aside-pages-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &__item {
+
+    }
+    
+    &__link {
+        display: block;
+        margin-block-end: var(--main-gap);
+        padding-inline: calc(var(--main-gap) * 1.5);
+        padding-block: calc(var(--main-gap) / 2);
+        background-color: var(--light-bg-color-light);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        text-decoration: none;
+        color: var(--dark-text-color);
+        transition: background-color 300ms ease;
+
+        &:is(:hover, :focus-visible) {
+            background-color: var(--link-color-light);
+        }
+    }
+}

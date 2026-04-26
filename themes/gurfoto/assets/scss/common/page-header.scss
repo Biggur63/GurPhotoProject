@@ -1,0 +1,51 @@
+.page-header {
+
+    &--bg {
+        --page-header-padding: clamp(
+            var(--main-gap),
+            calc(var(--main-gap) + 1vw),
+            var(--block-gap)
+            );
+
+        margin: 0;
+        aspect-ratio: 2;
+        background: 
+            var(--page-header-bg-image),
+            var(--dark-bg-gradient, var(--dark-bg-color));
+        background-blend-mode: overlay;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        padding: var(--page-header-padding);
+        color: var(--light-text-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: var(--main-gap);
+    }
+    
+    &__title {
+    }
+    
+    &__link {
+        display: inline-block;
+        padding-inline: calc(var(--main-gap) * 1.4);
+        padding-block: calc(var(--main-gap) / 2);
+        background-color: var(--light-bg-color-light);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        text-decoration: none;
+        color: var(--dark-text-color);
+        transition: background-color 300ms ease;
+
+        &:is(:hover, :focus-visible) {
+            background-color: var(--link-color-light);
+        }
+    }
+}

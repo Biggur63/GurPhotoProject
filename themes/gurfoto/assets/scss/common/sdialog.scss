@@ -1,0 +1,25 @@
+.sdialog {
+    position: relative;
+    padding: var(--main-gap);
+    max-width: 38ch;
+    // inset: 0;
+    margin: auto;
+    border: 2px solid var(--accent-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    
+    &::backdrop {
+        background: var(--accent-color-night);
+        background: linear-gradient(45deg, var(--accent-color-dark), var(--link-color-dark));
+        opacity: .7;
+    }
+
+    &__close-btn {
+        position: absolute;
+        top: var(--main-gap);
+        right: var(--main-gap);
+        border: 0;
+        background-color: var(--accent-color);
+        border-radius: var(--border-radius);
+    }
+}

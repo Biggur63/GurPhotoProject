@@ -1,0 +1,163 @@
+@use "skip-to-content";
+@use "nav-toggler";
+@use "header-logo";
+
+.header {    
+    position: relative;
+    background-color: var(--dark-bg-color);
+    
+    @media (min-width: 70em) {
+        --toggler-display: none;
+        // --nav-visibility: visible;
+        --desktop-border: none;
+        --desktop-margin: none;
+        --desktop-padding: none;
+        --desktop-transform: none;
+        --desktop-size: auto;
+        --desktop-ul-display: flex;
+        --desktop-position: static;
+        --desktop-overflow-y: visible;
+        --desktop-nav-visibility: visible;
+        --desktop-sublist-width: max-content;
+        --desktop-sublist-left: auto;
+        --desktop-sublist-position: absolute;
+        --desktop-sublist-opacity: 0;
+        --desktop-pointer-events: none;
+    }
+
+    &__block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1vw;
+        padding-block: var(--main-gap);
+                
+        .header__nav {
+            display: flex;
+            flex-direction: column;
+            position: var(--desktop-position, absolute);
+            transform: var(--desktop-transform, translateX(0%));
+            // transition: var(--desktop-transform, transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55));
+            transition: var(--desktop-transform, transform .35s ease-out);
+            top: 100%;
+            left: 100%;
+            z-index: 10;
+            width: var(--desktop-size, calc(min(22rem, 100vw)));
+            min-height: var(--desktop-size, calc(100dvh - 100%));
+            max-height: 100%;
+            overflow-y: var(--desktop-overflow-y, scroll);
+            padding: var(--desktop-padding, 0.6rem);
+            color: var(--light-bg-color);
+            background-color: var(--desktop-border, var(--light-text-color));
+            background-color: var(--dark-bg-color);
+            box-shadow: var(--desktop-border, var(--nav-list-shadow, -5px 0 11px 0 #00000046));
+        
+            &-list {
+                display: var(--desktop-ul-display, block);
+                column-gap: calc(var(--main-gap) / 2);
+                margin: var(--desktop-margin, 1rem 0 0);
+                border-top: var(--desktop-border, 2px solid var(--btn-grey));
+                padding: 0;
+                list-style: none;
+            }
+        
+            &-item > a {
+                text-decoration-color: transparent;
+                text-decoration-thickness: 4px;
+                text-underline-offset: .5em;
+                display: block;
+                padding: 0.5em;
+                color: var(--light-text-color);
+                transition: text-decoration-color 600ms ease, color 300ms ease;
+
+                &:visited {
+                    color: var(--light-text-color);
+                }
+                
+                &:is(:hover, :focus-visible) {
+                    color: var(--link-color);
+                    text-decoration-color: inherit;
+                }                
+            }
+
+            &-item--has-children {
+                position: relative;
+
+                .header__nav-sublist {
+                    position: var(--desktop-sublist-position, static);
+                    z-index: 99;
+                    right: 0;
+                    left: var(--desktop-sublist-left, 0.5em);
+                    top: calc(100% - 4px);
+                    width: var(--desktop-sublist-width, 100%);
+                    padding-block: var(--main-gap);
+                    padding-inline: var(--block-gap);
+                    list-style: none;
+                    background-color: var(--dark-bg-color);
+                    border-bottom-left-radius: var(--border-radius);
+                    border-bottom-right-radius: var(--border-radius);
+                    box-shadow: var(--box-shadow);
+                    pointer-events: var(--desktop-pointer-events, all);
+                    opacity: var(--desktop-sublist-opacity, 1);
+
+                    & a {
+                        color: var(--light-text-color);
+                        text-decoration: none;
+                        line-height: 1.8;
+                        transition: color 300ms ease-in-out;
+
+                        &:visited {
+                            color: var(--light-text-color);
+                        }
+
+                        &:is(:hover, :focus-visible) {
+                            color: var(--link-color);
+                        }
+                    }
+
+                    &:is(:hover, :focus-within) {
+                        pointer-events: all;
+                        opacity: 1;
+                    }
+                }
+
+                & > a::before {
+                    content: "\25b8";
+                    display: inline-block;
+                    position: absolute;
+                    left: -0.25em;
+                    transition: transform 300ms ease-in-out;
+                }
+                
+                & > a {
+
+                    &:is(:hover, :focus-visible) {
+                        
+                        &::before {
+                            transform: rotate(90deg);
+                        }
+
+                        & + .header__nav-sublist {
+                            pointer-events: all;
+                            opacity: 1;
+                        }
+                    }
+                }                
+            }
+            
+            &-item--active > a {
+                color: var(--link-color-light);
+                text-decoration-color: inherit;
+            }
+
+            &.header__nav--open {
+                visibility: visible;
+                transform: translateX(-100%);
+            }
+
+            &[data-visibility="hidden"] {
+                visibility: var(--desktop-nav-visibility, hidden);
+            }
+        }
+    }
+} 

@@ -1,0 +1,11 @@
+<details class="sc-details" {{ if eq (.Get 1) "open"}} open{{ end }}>
+    <summary>
+        {{ with .Get 0 }}
+        <h3>{{ . | markdownify }}</h3>
+        {{ end }}
+    </summary>
+        <div>
+            {{ .Inner | markdownify }}
+        </div>
+</details>
+

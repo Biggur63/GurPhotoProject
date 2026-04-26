@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="width-wrapper">
+    <div class="list">
+        <main id="main-content" class="list__main">
+            <article>
+                {{ partial "page-header" . }}
+                {{ .Content }}
+            </article>
+            {{ with .Params.Price }}
+                {{ partial "price-section" . }}
+            {{ end }}
+        </main>
+        <aside class="list__aside">
+            {{- with .Pages }}
+                {{- partial "aside-pages-list" . }}
+            {{- end }}
+            {{ partial "homepage/services" . }}
+        </aside>
+    </div>
+</div>
+{{ end }}

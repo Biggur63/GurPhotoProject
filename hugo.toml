@@ -1,0 +1,77 @@
+# Do not change!
+baseURL = 'https://gurfoto.ru/'
+# Do not change! 
+defaultContentLanguage = 'ru'
+# SEO — text for title tag in head section
+title = "Фотографическое агентство GurFoto.Ru"
+
+# Do not change! Used theme name
+theme = "gurfoto"
+# Do not change!
+disableKinds = ["taxonomy", "term"]
+# Do not change!
+enableRobotsTXT = true
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
+[params]
+    skipToContentText = "Перейти к содержимому"
+    heroTitle = "Фотоагентство"
+    # SEO — text for meta description
+    description = "Портрет, интерьерная, предметная, архитектурная, панорамная и рекламная съемка. Проект: Фотошкола в Ростове. Индивидуальное обучение фотографии"
+    # used in the JSON-LD (microdata)
+    name = "GurFoto.Ru"
+    # used in header
+    logoName = "GurFoto.Ru"
+    # used in the JSON-LD and footer
+    foundingDate = 2013
+    # used in the JSON-LD and footer
+    email = "biggur@mail.ru"
+    # Used in the footer
+    phones = [
+        "+7 919 874 20 24"        
+    ]
+    # Used in the footer
+    address = [        
+    ]
+    # Used in the footer, google map route url
+    mapRoute =  "" 
+    
+    # Name of the image for the hero section on home page. Image is located ./assets/images/
+    heroBackground = "1-40.webp"
+
+    # Blog/news section
+    blogNewsHeader = "Статьи"
+    qtyBlogNews = 7
+    readAllNews = "Читать все статьи"
+
+    math = true          # или math.force = true
+
+# Do not change!
+[privacy]
+  [privacy.googleAnalytics]
+    disable = false
+    respectDoNotTrack = false
+
+[markup]
+  [markup.goldmark]
+  [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [
+            ["\\[", "\\]"],
+            ["$$", "$$"]
+          ]
+          inline = [
+            ["\\(", "\\)"],
+            ["$", "$"]
+          ]
+
+[services]
+  [services.googleAnalytics]
+    ID = "GA4-364782959"
+   

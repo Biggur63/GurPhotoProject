@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div class="width-wrapper">
+    <div class="single">
+        <main id="main-content" class="single__main">
+            <article>
+                {{ partial "page-header" . }}        
+                {{ .Content }}
+            </article>
+            {{- with .Params.FormSection }}
+                {{ partial "form-section" . }}
+            {{- end }}
+        </main>
+        <aside class="single__aside">
+            <div class="stk">
+                {{- if .Params.toc }}
+                <h3>Alphabetischer Index</h3>
+                {{ .TableOfContents }}
+                {{- end }}
+                {{- if not (.Parent.IsHome) }}
+                    {{- with .CurrentSection.Pages }}
+                        {{ partial "aside-pages-list" . }}
+                    {{- end }}
+                {{- end }}
+                {{ partial "homepage/services" . }}
+            </div>
+        </aside>
+    </div>
+</div>
+{{ end }}

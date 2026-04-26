@@ -1,0 +1,125 @@
+:root {
+  interpolate-size: allow-keywords;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+html {
+    height: 100vh;
+    height: 100dvh;
+    overflow-x: hidden;
+    overflow-x: clip;
+    scroll-behavior: smooth;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    min-width: 360px;
+    overflow-x: hidden;
+    overflow-x: clip;
+    font-family: var(--ff-main);
+    font-size: var(--fs-500);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--light-bg-color);
+    color: var(--dark-text-color);
+
+    &.dialog-open {
+        overflow: hidden;
+        /* Prevent width changes due to missing scrollbar */
+        padding-right: calc(100vw - 100%);
+        /* Prevent iOS bounce scroll effect */
+        position: fixed;
+        width: 100%;
+    }
+}
+
+a:not([class]) {
+    text-decoration-thickness: max(0.08em, 1px);
+    text-underline-offset: 0.15em;
+}
+
+img, picture, video, svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-inline: auto;
+}
+
+figure, picture {
+    margin-block-start: 1em;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+hr {
+    margin-block: var(--main-gap);
+    border: none;
+    border-top: dotted 4px var(--link-color-light);
+}
+
+table {
+    --border-width: 4px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-block-start: var(--main-gap);
+
+    th {
+        background-color: var(--accent-color-light);
+        
+        &:not(:first-child) {
+            border-left: solid var(--border-width) var(--light-bg-color);
+        }
+    }
+
+    tr:nth-child(even) {
+        background-color: var(--link-color-light);
+    }
+
+    td {
+        padding-inline: calc(var(--main-gap) / 2);
+    }
+
+    td:not(:first-child) {
+        border-left: solid var(--border-width) var(--light-bg-color);
+        text-align: center;
+    }
+}
+
+:focus-visible {
+    --outline-size: max(2px, 0.15em);
+
+    outline:
+        var(--outline-width, var(--outline-size))
+        var(--outline-style, solid)
+        var(--outline-color, var(--accent-color-light                   ));
+    outline-offset: var(--outline-offset, calc(var(--outline-size) * 1.5) );
+}
+
+.width-wrapper {
+    max-width: calc(min(1280px, 100vw));
+    min-width: 360px;
+    margin-inline: auto;
+    padding-inline: var(--main-gap);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  

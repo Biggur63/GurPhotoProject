@@ -1,0 +1,8 @@
+User-agent: *
+Sitemap: {{ "sitemap.xml" | absURL }}
+
+{{- range .Pages }}
+{{- if .Params.noRobots }}
+Disallow: {{ .RelPermalink }}
+{{- end }}
+{{- end }}

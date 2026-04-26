@@ -1,0 +1,37 @@
+<footer class="footer">
+    <div class="width-wrapper">
+        <div class="footer-inner">
+            <div class="footer__main">
+                <a class="footer__logo" href="{{ site.Home.RelPermalink }}">
+                    {{ partialCached "logo-svg" . }}
+                    <h2>{{ site.Params.logoName }}</h2>
+                </a>
+                <div class="footer__contacts">
+                    <div class="footer__contacts-part">
+                    {{ site.Params.email }}<br>
+                    {{- range site.Params.phones }}
+                    {{ . | markdownify }}<br>
+                    {{- end }}
+                    </div>
+                    <div class="footer__contacts-part">
+                        {{- range site.Params.address }}
+                        {{ . | markdownify }}<br>
+                        {{- end }}
+                    </div>
+                    {{ with site.Params.mapRoute}}
+                    <div class="footer__contacts-part">
+                        <a href="{{ . }}" target="_blank" rel="noopener noreferrer">
+                            Построить маршрут
+                        </a>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+            <div class="footer__navs">
+                {{ partial "footer/footer-nav.html" "service" }}
+                {{ partial "footer/footer-nav.html" "info" }}
+            </div>
+        </div>
+    </div>
+    {{ partial "footer/footer-legal"}}
+</footer>

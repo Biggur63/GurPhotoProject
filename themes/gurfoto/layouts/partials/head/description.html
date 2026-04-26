@@ -1,0 +1,11 @@
+{{ $description := site.Params.description }}
+
+{{ if not page.IsHome }}
+    {{ with page.Description }}
+        {{ $description = . }}
+    {{ else }}
+        {{ $description = page.Summary | plainify}}
+    {{ end }}
+{{ end }}
+
+{{ return $description }}

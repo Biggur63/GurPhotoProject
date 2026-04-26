@@ -1,0 +1,36 @@
+{{- $pageBg := .Resources.GetMatch .Params.cover_img -}}
+{{- $headless := site.GetPage "/headless" }}
+{{- $priceURL := "" }}
+{{- $priceTitle := "" }}
+{{- with .CurrentSection.Params.Price }}
+    {{- $priceURL = path.Join $.CurrentSection.RelPermalink "#price"  }}
+    {{- with $headless.Resources.GetMatch . }}
+        {{- $priceTitle = default .Title .Params.BtnText }}
+        {{ else }}
+        {{- $priceTitle = "Прайс" }}
+    {{- end }}
+{{- end }}
+
+{{- with $pageBg }}
+{{- $pageBgOptimized := . -}}
+{{- if gt .Width 1400 }}
+    {{- $pageBgOptimized = .Resize "1400x webp q76" }}
+{{- else }}
+    {{- $pageBgOptimized = .Resize (printf "%dx webp q76" .Width) }}
+{{- end }}
+<header
+class="page-header page-header--bg"
+style="--page-header-bg-image: url('{{ $pageBgOptimized.RelPermalink }}');">
+{{- else }}
+<header class="page-header">
+{{- end }}
+    <div class="page-header__top">
+        <div class="page-header__back-to-section">
+            {{ partial "back-to-section" . }}
+        </div>
+        {{- with $priceURL }}
+            <a class="page-header__link" href="{{ . }}">{{ $priceTitle }}</a>
+        {{- end }}
+    </div>
+    <h1 class="page-header__title">{{ .Title }}</h1>
+</header>

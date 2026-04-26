@@ -1,0 +1,8 @@
+{{- $headless := site.GetPage "/headless" }}
+{{- with $headless.Resources.GetMatch .  }}
+<section class="price" id="price">
+    <h2 class="prise__title">{{ .Title }}</h2>
+    {{ partial "price-list.html" .Params.price }}
+    {{ .Content }}
+</section>
+{{- end }}

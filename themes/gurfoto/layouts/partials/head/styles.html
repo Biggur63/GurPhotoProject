@@ -1,0 +1,7 @@
+{{ $styles := resources.Get "styles/main.css" }}
+{{ if hugo.IsProduction }}
+{{ $styles = $styles | resources.Minify | resources.Fingerprint }}
+{{ else }}
+{{ $styles = $styles | resources.Fingerprint }}
+{{ end }}
+{{ return $styles }}

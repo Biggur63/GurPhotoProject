@@ -1,0 +1,28 @@
+.back-to-top {
+    --btt-size: 46px;
+
+    position: fixed;
+    z-index: 100;
+    right: calc(var(--main-gap) * 1.2);
+    bottom: calc(var(--main-gap) * 4);
+    display: grid;
+    place-content: center;
+    width: var(--btt-size);
+    height: var(--btt-size);
+    background-color: var(--accent-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    visibility: hidden;
+
+    &__arrow {
+        width: calc(var(--btt-size) / 2);
+        height: calc(var(--btt-size) / 2);
+        border-left: solid;
+        border-top: solid;
+        border-width: 3px;
+        border-color: var(--light-text-color);
+        transform:
+            translateY(calc(var(--btt-size) / 7))
+            rotate(45deg);
+    }
+}

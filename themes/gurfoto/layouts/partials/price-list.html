@@ -1,0 +1,12 @@
+<ul class="price__list">
+    {{- range sort . "order" }}
+    <li class="price__item p-card">
+        <h3 class="p-card__title">{{ .title }}</h3>
+        <div class="p-card__info">
+            <span>{{ .cost }}</span>
+            <span>{{ .duration }}</span>
+        </div>
+        <div class="p-card__text">{{ .text | markdownify }}</div>
+    </li>
+    {{- end }}
+</ul>

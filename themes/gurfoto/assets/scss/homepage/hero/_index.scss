@@ -1,0 +1,71 @@
+.hero {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        background:
+            var(--hero-bg-image),
+            var(--dark-bg-gradient, var(--dark-bg-color))
+            ;
+        background-blend-mode: overlay;
+        background-repeat: repeat-x;
+        background-size: cover;
+        background-position: center;
+        filter: sepia(30%);
+    }
+
+    &__block {
+        position: relative;
+        
+        .hero__content {
+            width: calc(min(76ch, 100% - 4rem));
+            padding-block: var(--block-gap);
+            color: var(--light-text-color);
+            
+            &-title {
+                margin: 0;
+                text-wrap: balance;
+                font-size: calc(clamp(2rem, 1rem + 5vw, 3.2rem));
+                letter-spacing: 0.01em;
+                line-height: 1.15;
+            }
+            
+            & > ul {
+                margin-block-start: calc(var(--main-gap) / 2);
+                margin-block-end: var(--main-gap);
+                font-size: var(--fs-700);
+                line-height: 1.5;
+            }
+            
+            & > .hero__contact {
+                display: flex;
+                justify-content: start;
+                flex-wrap: wrap;
+                gap: var(--main-gap);
+                
+                & > a {
+                    flex: 1 1 240px;
+                    max-width: 280px;
+                    padding: var(--main-gap) var(--block-gap);
+                    text-align: center;
+                    text-decoration: none;
+                    font-family: var(--ff-accent);
+                    font-weight: 600;
+                    color: var(--dark-text-color);
+                    background-color: var(--accent-color);
+                    box-shadow: var(--box-shadow);
+                    border-radius: var(--border-radius);
+                    transition: background-color 300ms;
+
+                    &:is(:hover, :focus-visible) {
+                        background-color: var(--link-color-light);
+                    }
+                }
+            }
+        }
+
+    }
+}

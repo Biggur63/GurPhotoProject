@@ -1,0 +1,15 @@
+.skip-to-content {
+    position: absolute;
+    left: var(--main-gap);
+    padding-block: calc(var(--main-gap) / 2);
+    padding-inline: var(--main-gap);
+    background-color: var(--accent-color-light);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);    
+    transform: translateY(-128%);
+    transform-origin: top;
+    transition: transform 400ms ease-out;
+
+    &:focus {
+        transform: translate(0);
+    }
+}

@@ -1,0 +1,36 @@
+{{- with .Site.GetPage "/blog" }}
+{{- $blog := . }}
+<div class="blog">
+    <div class="width-wrapper">
+        <div class="blog__block">
+            <h2 class="blog__title">{{ site.Params.blogNewsHeader }}</h2>
+            <ul class="blog__list">
+                {{- with $blog.Pages }}
+                {{- range first site.Params.qtyBlogNews . }}
+                <li class="blog__item">
+                    <a class="bcard" href="{{ .RelPermalink }}">
+                        <h3 class="bcard__title">
+                            {{- .Title -}}
+                        </h3>
+                        <p class="bcard__text">
+                            {{- .Description -}}
+                        </p>
+                        <time class="bcard__date" datetime="{{ .Date | time.Format "2006-01-02" }}">
+                            {{- .Date | time.Format "02.01.2006" -}}
+                        </time>
+                    </a>
+                </li>
+                {{- end }}
+                {{- end }}
+                <li class="blog__item">
+                    <a class="bcard" href="{{ $blog.RelPermalink }}">
+                        <h3 class="bcard__title">
+                            {{ site.Params.readAllNews}}
+                        </h3>
+                    </a>
+                </li>
+            </ul>            
+        </div>
+    </div>
+</div>
+{{- end }}

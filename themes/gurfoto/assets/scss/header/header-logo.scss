@@ -1,0 +1,21 @@
+.header__logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1vw;
+    line-height: 1;
+    text-decoration: none;
+
+    & > svg {
+        max-width: 56px;
+        max-height: 56px;
+    }
+
+    &-name {
+        padding-bottom: 1px;
+        font-family: var(--ff-accent);
+        font-size: 2.4rem;
+        font-weight: 600;
+        color: var(--light-bg-color);
+    }
+}

@@ -1,0 +1,36 @@
+.list {
+    margin-block-start: var(--block-gap);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--block-gap);
+
+    &__main {
+        flex: 1 1 48ch;   
+        
+        .list-content {
+
+            &__list {
+                margin-block: var(--main-gap);
+            }
+            
+            &__item {
+                font-size: var(--fs-600);
+                line-height: 1.9;
+                
+                display: list-item flex;
+                justify-content: space-between;
+
+                time {
+                    font-size: var(--fs-400);
+                }
+            }
+        }
+    }
+
+
+    
+    &__aside {
+        flex: 1;
+    }
+
+}

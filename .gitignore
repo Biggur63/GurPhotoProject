@@ -1,0 +1,10 @@
+public
+resources/_gen
+Фото/
+.DS_Store
+.hugo_cache/
+hugo-build.err.log
+hugo-build.out.log
+.hugo_build.lock
+NUL
+NUL.map

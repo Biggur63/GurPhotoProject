@@ -1,0 +1,36 @@
+{{- $src := resources.Get (path.Join "images" (.Get "src")) -}}
+{{- $alt := .Get "alt" -}}
+{{- $imgIndex := default 0 (.Page.Store.Get "imgr-count") -}}
+{{- $isFirst := eq $imgIndex 0 -}}
+{{- .Page.Store.Set "imgr-count" (add $imgIndex 1) -}}
+{{- $small := $src -}}
+{{- $large := $src -}}
+{{- $isWebp := eq $src.MediaType.SubType "webp" -}}
+{{- $shouldOptimize := or (gt $src.Width 1280) (and (not $isWebp) (gt $src.Width 1000)) -}}
+
+{{- if and $shouldOptimize (gt $src.Width 720) -}}
+    {{- $small = $src.Resize "720x webp q72" -}}
+{{- end -}}
+{{- if $shouldOptimize -}}
+    {{- $targetWidth := cond (gt $src.Width 1280) 1280 $src.Width -}}
+    {{- $large = $src.Resize (printf "%dx webp q78" $targetWidth) -}}
+{{- else if ne $small.RelPermalink $src.RelPermalink -}}
+    {{- $large = $small -}}
+{{- end -}}
+
+<picture>
+    {{- if ne $large.RelPermalink $small.RelPermalink }}
+    <source
+        srcset="{{ $small.RelPermalink }} 720w, {{ $large.RelPermalink }} {{ $large.Width }}w"
+        sizes="(max-width: 760px) 100vw, min(100vw, 1280px)"
+        type="image/webp">
+    {{- end }}
+    <img
+        src="{{ $large.RelPermalink }}"
+        alt="{{ $alt }}"
+        loading="{{ if $isFirst }}eager{{ else }}lazy{{ end }}"
+        fetchpriority="{{ if $isFirst }}high{{ else }}auto{{ end }}"
+        decoding="async"
+        width="{{ $large.Width }}"
+        height="{{ $large.Height }}">
+</picture>
