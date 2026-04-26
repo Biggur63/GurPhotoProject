@@ -19,6 +19,7 @@ jobs:
       DART_SASS_VERSION: 1.90.0
       HUGO_VERSION: 0.160.1
       TZ: Europe/Moscow
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -58,9 +59,9 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: ${{ runner.temp }}/hugo_cache
-          key: hugo-${{ env.HUGO_VERSION }}
+          key: hugo-${{ env.HUGO_VERSION }}-${{ github.sha }}
           restore-keys: |
-            hugo-
+            hugo-${{ env.HUGO_VERSION }}-
       - name: Build the site
         run: |
           hugo \
@@ -74,21 +75,6 @@ jobs:
         with:
           path: ${{ runner.temp }}/hugo_cache
           key: ${{ steps.cache-restore.outputs.cache-primary-key }}
-      - name: Diagnose SFTP connection
-        run: |
-          RCLONE_SFTP_PASS="$(rclone obscure "${{ secrets.SFTP_PASSWORD }}")"
-          echo "Checking SFTP root access..."
-          rclone lsf :sftp:/ \
-            --sftp-host=${{ secrets.SFTP_HOST }} \
-            --sftp-user=${{ secrets.SFTP_USERNAME }} \
-            --sftp-pass="$RCLONE_SFTP_PASS" \
-            --max-depth 1 | head -n 20
-          echo "Checking target directory access..."
-          rclone lsf :sftp:${{ secrets.SFTP_TARGET_DIR }} \
-            --sftp-host=${{ secrets.SFTP_HOST }} \
-            --sftp-user=${{ secrets.SFTP_USERNAME }} \
-            --sftp-pass="$RCLONE_SFTP_PASS" \
-            --max-depth 1 | head -n 20
       - name: Deploy with rclone
         run: |
           RCLONE_SFTP_PASS="$(rclone obscure "${{ secrets.SFTP_PASSWORD }}")"
