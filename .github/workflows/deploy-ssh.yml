@@ -58,7 +58,6 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: ${{ runner.temp }}/hugo_cache
-          key: ${{ steps.cache-restore.outputs.cache-primary-key }}
           key: hugo-${{ env.HUGO_VERSION }}
           restore-keys: |
             hugo-
