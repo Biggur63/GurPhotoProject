@@ -93,3 +93,15 @@
 | 2026-04-24 | Bill Brandt | Nude, Campden Hill, London | 2026-06-24 или +25 статей | Как снять портрет без студии и сложного света |
 | 2026-04-24 | Robert Doisneau | Picasso et Françoise Gilot, 1952 | 2026-06-24 или +25 статей | Как снять портрет без студии и сложного света |
 | 2026-04-24 | Henri Cartier-Bresson | Railway station, St. Louis, Missouri, 1957 | 2026-06-24 или +25 статей | Как снять портрет без студии и сложного света |
+| 2026-04-27 | Rineke Dijkstra | Kolobrzeg, Poland, July 27, 1992 | 2026-06-27 или +25 статей | Почему зритель верит одним фотографиям и не верит другим |
+| 2026-04-27 | Cindy Sherman | Untitled Film Still #48, 1979 | 2026-06-27 или +25 статей | Почему зритель верит одним фотографиям и не верит другим |
+| 2026-04-27 | Wolfgang Tillmans | Lutz & Alex sitting in the trees, 1992 | 2026-06-27 или +25 статей | Почему зритель верит одним фотографиям и не верят другим |
+| 2026-04-27 | Philip-Lorca diCorcia | Tim, 1990 | 2026-06-27 или +25 статей | Почему зритель верит одним фотографиям и не верит другим |
+| 2026-04-27 | Jeff Wall | Morning Cleaning, Mies van der Rohe Foundation, Barcelona, 1999 | 2026-06-27 или +25 статей | Почему зритель верит одним фотографиям и не верит другим |
+| 2026-04-27 | Larry Sultan | My Mother Posing for Me, from the series Pictures from Home, 1984 | 2026-06-27 или +25 статей | Почему зритель верит одним фотографиям и не верит другим |
+| 2026-04-27 | Nan Goldin | Nan one month after being battered, 1984 | 2026-06-27 или +25 статей | Почему зритель верит одним фотографиям и не верят другим |
+| 2026-04-27 | Tina Barney | Sunday New York Times, 1982 | 2026-06-27 или +25 статей | Почему зритель верит одним фотографиям и не верят другим |
+| 2026-04-27 | Alec Soth | Charles, Vasa, Minnesota, 2002 | 2026-06-27 или +25 статей | Почему зритель верит одним фотографиям и не верят другим |
+| 2026-04-27 | Emmet Gowin | Edith, Danville, Virginia. August 1966 | 2026-06-27 или +25 статей | Почему зритель верит одним фотографиям и не верят другим |
+| 2026-04-27 | Philip-Lorca diCorcia | William Charles Everlove; 26 Years Old; Stockholm, Sweden, Via Arizona; $40, 1991 | 2026-06-27 или +25 статей | Почему зритель верит одним фотографиям и не верит другим |
+| 2026-04-27 | Larry Sultan | Dad on Boat, from the series Pictures from Home, 1984 | 2026-06-27 или +25 статей | Почему зритель верит одним фотографиям и не верят другим |
