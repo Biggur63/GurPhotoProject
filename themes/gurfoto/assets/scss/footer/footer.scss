@@ -57,5 +57,9 @@
 
     a {
         color: inherit;
+
+        &:visited {
+            color: inherit;
+        }
     }
 }

@@ -105,3 +105,25 @@
 | 2026-04-27 | Emmet Gowin | Edith, Danville, Virginia. August 1966 | 2026-06-27 или +25 статей | Почему зритель верит одним фотографиям и не верят другим |
 | 2026-04-27 | Philip-Lorca diCorcia | William Charles Everlove; 26 Years Old; Stockholm, Sweden, Via Arizona; $40, 1991 | 2026-06-27 или +25 статей | Почему зритель верит одним фотографиям и не верит другим |
 | 2026-04-27 | Larry Sultan | Dad on Boat, from the series Pictures from Home, 1984 | 2026-06-27 или +25 статей | Почему зритель верит одним фотографиям и не верят другим |
+| 2026-04-28 | Diane Arbus | A young Brooklyn family going for a Sunday outing, N.Y.C., 1966 | 2026-06-28 или +25 статей | Что делает портрет неестественным и неубедительным |
+| 2026-04-28 | Irving Penn | Truman Capote, New York, 1948 | 2026-06-28 или +25 статей | Что делает портрет неестественным и неубедительным |
+| 2026-04-28 | Yousuf Karsh | Georgia O'Keeffe, 1956 | 2026-06-28 или +25 статей | Что делает портрет неестественным и неубедительным |
+| 2026-04-28 | August Sander | Young Farmers, 1914 | 2026-06-28 или +25 статей | Что делает портрет неестественным и неубедительным |
+| 2026-04-28 | Henri Cartier-Bresson | Alberto Giacometti, rue d'Alésia, 1961 | 2026-06-28 или +25 статей | Что делает портрет неестественным и неубедительным |
+| 2026-05-01 | Susan Meiselas | Dee and Lisa on Mott Street. Little Italy. New York City. USA., 1976 | 2026-07-01 или +25 статей | 7 вещей, которые портят почти любой кадр |
+| 2026-05-01 | Henri Cartier-Bresson | Behind the Gare St. Lazare, 1932 | 2026-07-01 или +25 статей | Недавний повтор / частое использование |
+| 2026-05-01 | Elliott Erwitt | New York City (Bulldog and leg), 1989 | 2026-07-01 или +25 статей | 7 вещей, которые портят почти любой кадр |
+| 2026-05-01 | Fan Ho | Approaching Shadow, 1954 | 2026-07-01 или +25 статей | Недавний повтор / не использовать повторно сейчас |
+| 2026-05-01 | William Eggleston | Greenwood, Mississippi, 1973 | 2026-07-01 или +25 статей | Запрещено к использованию по указанию редактора |
+| 2026-05-01 | Joel Sternfeld | McLean, Virginia, December 1978 | 2026-07-01 или +25 статей | 7 вещей, которые портят почти любой кадр |
+| 2026-05-01 | Thomas Struth | Pantheon, Rome, 1990 | 2026-07-01 или +25 статей | 7 вещей, которые портят почти любой кадр |
+| 2026-05-01 | Lee Friedlander | Shadow—New York City, from the portfolio 15 Photographs | 2026-07-01 или +25 статей | Недавний повтор / не использовать повторно сейчас |
+| 2026-05-01 | Fred Herzog | Man with Bandage, 1968 | 2026-07-01 или +25 статей | 7 вещей, которые портят почти любой кадр |
+| 2026-05-01 | André Kertész | Meudon, 1928 | 2026-07-01 или +25 статей | 7 вещей, которые портят почти любой кадр |
+| 2026-05-01 | Diane Arbus | Identical Twins, Roselle, New Jersey, 1967 | 2026-07-01 или +25 статей | Недавний повтор / не использовать повторно сейчас |
+| 2026-05-01 | Richard Avedon | Carl Hoefert, unemployed black jack dealer, Reno, Nevada, August 30, 1983 | 2026-07-01 или +25 статей | Недавний повтор / не использовать повторно сейчас |
+| 2026-05-01 | Richard Avedon | Charlene van Tighem, Physical Therapist, Augusta, Montana, June 23/26, 1983 | 2026-07-01 или +25 статей | Недавний повтор / не использовать повторно сейчас |
+| 2026-05-01 | August Sander | Secretary at West German Radio, Cologne, 1931 | 2026-07-01 или +25 статей | Недавняя замена / не использовать повторно сейчас |
+| 2026-05-01 | Richard Avedon | Ronald Fischer, Beekeeper, Davis, California, May 9, 1981 | 2026-07-01 или +25 статей | Запрещено к использованию по указанию редактора |
+| 2026-05-01 | Thomas Ruff | Portrait (R. Huber), 1988 | 2026-07-01 или +25 статей | Запрещено к использованию по указанию редактора |
+| 2026-05-01 | Arnold Newman | Max Ernst, New York City, 1942 | 2026-07-01 или +25 статей | 7 вещей, которые портят почти любой кадр |

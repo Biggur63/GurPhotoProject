@@ -18,12 +18,20 @@
             text-decoration: none;
             transition: color 300ms linear;
 
+            &:visited {
+                color: var(--light-bg-color);
+            }
+
             &:is(:hover, :focus-visible) {
                 color: var(--link-color-light);
             }
     
             &--active {
                 color: var(--link-color);
+
+                &:visited {
+                    color: var(--link-color);
+                }
             }
         }
     }
