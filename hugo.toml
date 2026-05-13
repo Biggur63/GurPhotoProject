@@ -11,6 +11,7 @@ theme = "gurfoto"
 disableKinds = ["taxonomy", "term"]
 # Do not change!
 enableRobotsTXT = true
+cacheDir = 'C:/Verstak/GurPhotoProject-publish/.hugo_cache'
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
