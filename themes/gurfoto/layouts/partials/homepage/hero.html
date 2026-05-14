@@ -1,11 +1,12 @@
 {{ $heroBg := resources.Get (path.Join "images" .Site.Params.HeroBackground) }}
+{{- $skipImageProcessing := eq (os.Getenv "HUGO_SKIP_IMAGE_PROCESSING") "true" -}}
 {{ $phone := index site.Params.phones 0 }}
 {{ $email := site.Params.email  }}
 {{ with $heroBg }}
 {{- $heroBgOptimized := . -}}
-{{- if gt .Width 1600 }}
+{{- if and (not $skipImageProcessing) (gt .Width 1600) }}
     {{- $heroBgOptimized = .Resize "1600x webp q76" }}
-{{- else }}
+{{- else if not $skipImageProcessing }}
     {{- $heroBgOptimized = .Resize (printf "%dx webp q76" .Width) }}
 {{- end }}
 <div class="hero" role="banner" style="--hero-bg-image: url('{{ $heroBgOptimized.RelPermalink }}');">

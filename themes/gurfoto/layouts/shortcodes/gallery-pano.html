@@ -1,4 +1,5 @@
 {{- .Page.Store.Set "sc-pano-gallery" true }}
+{{- $skipImageProcessing := eq (os.Getenv "HUGO_SKIP_IMAGE_PROCESSING") "true" -}}
 {{- $galName := .Get 0 }}
 {{- $gal := slice }}
 {{- $colWidth := default 280 (.Get 1) }}
@@ -12,7 +13,10 @@
     {{- range . }}
         {{- $itemImg := resources.Get (path.Join "images" .file) -}}
         {{- if $itemImg }}
-            {{- $thumbImg := $itemImg.Fill (printf "%.0fx%.0f webp q72" $imgWidth $imgHeight) }}
+            {{- $thumbImg := $itemImg }}
+            {{- if not $skipImageProcessing }}
+                {{- $thumbImg = $itemImg.Fill (printf "%.0fx%.0f webp q72" $imgWidth $imgHeight) }}
+            {{- end }}
             {{- $gal = $gal | append (dict
                 "thumbLink" $thumbImg.RelPermalink
                 "alt" .alt

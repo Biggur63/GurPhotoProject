@@ -1,12 +1,13 @@
 {{- $src := resources.Get (path.Join "images" (.Get "src")) -}}
 {{- $alt := .Get "alt" -}}
+{{- $skipImageProcessing := eq (os.Getenv "HUGO_SKIP_IMAGE_PROCESSING") "true" -}}
 {{- $imgIndex := default 0 (.Page.Store.Get "imgr-count") -}}
 {{- $isFirst := eq $imgIndex 0 -}}
 {{- .Page.Store.Set "imgr-count" (add $imgIndex 1) -}}
 {{- $small := $src -}}
 {{- $large := $src -}}
 {{- $isWebp := eq $src.MediaType.SubType "webp" -}}
-{{- $shouldOptimize := or (gt $src.Width 1280) (and (not $isWebp) (gt $src.Width 1000)) -}}
+{{- $shouldOptimize := and (not $skipImageProcessing) (or (gt $src.Width 1280) (and (not $isWebp) (gt $src.Width 1000))) -}}
 
 {{- if and $shouldOptimize (gt $src.Width 720) -}}
     {{- $small = $src.Resize "720x webp q72" -}}

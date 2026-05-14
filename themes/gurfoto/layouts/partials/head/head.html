@@ -1,6 +1,7 @@
 {{- $title := partial "head/title" }}
 {{- $description := partial "head/description" }}
 {{- $styles := partial "head/styles" }}
+{{- $skipImageProcessing := eq (os.Getenv "HUGO_SKIP_IMAGE_PROCESSING") "true" -}}
 {{- $ogImg := resources.Get (path.Join "images" .Site.Params.HeroBackground) }}
 {{- with .Page.Params.cover_img }}
 {{- $ogImg = $.Resources.GetMatch . -}}
@@ -19,7 +20,7 @@
                     {{- $preloadImg := . -}}
                     {{- $isWebp := eq .MediaType.SubType "webp" -}}
                     {{- $shouldOptimize := or (gt .Width 1280) (and (not $isWebp) (gt .Width 1000)) -}}
-                    {{- if $shouldOptimize -}}
+                    {{- if and (not $skipImageProcessing) $shouldOptimize -}}
                         {{- $targetWidth := cond (gt .Width 1280) 1280 .Width -}}
                         {{- $preloadImg = .Resize (printf "%dx webp q78" $targetWidth) -}}
                     {{- end -}}
@@ -32,9 +33,9 @@
 {{- $pageHeaderPreload := "" -}}
 {{- with .Resources.GetMatch .Params.cover_img }}
     {{- $pageBgPreload := . -}}
-    {{- if gt .Width 1400 }}
+    {{- if and (not $skipImageProcessing) (gt .Width 1400) }}
         {{- $pageBgPreload = .Resize "1400x webp q76" }}
-    {{- else }}
+    {{- else if not $skipImageProcessing }}
         {{- $pageBgPreload = .Resize (printf "%dx webp q76" .Width) }}
     {{- end }}
     {{- $pageHeaderPreload = $pageBgPreload.RelPermalink -}}
@@ -43,9 +44,9 @@
 {{- if .IsHome }}
     {{- with resources.Get (path.Join "images" .Site.Params.HeroBackground) }}
         {{- $heroBgPreload := . -}}
-        {{- if gt .Width 1600 }}
+        {{- if and (not $skipImageProcessing) (gt .Width 1600) }}
             {{- $heroBgPreload = .Resize "1600x webp q76" }}
-        {{- else }}
+        {{- else if not $skipImageProcessing }}
             {{- $heroBgPreload = .Resize (printf "%dx webp q76" .Width) }}
         {{- end }}
         {{- $heroPreload = $heroBgPreload.RelPermalink -}}
