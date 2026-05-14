@@ -217,7 +217,8 @@ else {
     Write-Host "No new file changes to commit."
 }
 
-$sshCommand = "ssh -F $SshConfig"
+$sshConfigForGit = $SshConfig -replace "\\", "/"
+$sshCommand = "ssh -F $sshConfigForGit"
 try {
     Invoke-Git -c "core.sshCommand=$sshCommand" push origin $Branch | Write-Host
     Write-Host "Saved through git push."
