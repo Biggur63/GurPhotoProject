@@ -1,5 +1,4 @@
 {{- $pageBg := .Resources.GetMatch .Params.cover_img -}}
-{{- $skipImageProcessing := eq (os.Getenv "HUGO_SKIP_IMAGE_PROCESSING") "true" -}}
 {{- $headless := site.GetPage "/headless" }}
 {{- $priceURL := "" }}
 {{- $priceTitle := "" }}
@@ -14,9 +13,9 @@
 
 {{- with $pageBg }}
 {{- $pageBgOptimized := . -}}
-{{- if and (not $skipImageProcessing) (gt .Width 1400) }}
+{{- if gt .Width 1400 }}
     {{- $pageBgOptimized = .Resize "1400x webp q76" }}
-{{- else if not $skipImageProcessing }}
+{{- else }}
     {{- $pageBgOptimized = .Resize (printf "%dx webp q76" .Width) }}
 {{- end }}
 <header

@@ -1,5 +1,4 @@
 {{- .Page.Store.Set "sc-gallery" true }}
-{{- $skipImageProcessing := eq (os.Getenv "HUGO_SKIP_IMAGE_PROCESSING") "true" -}}
 {{- $galName := .Get 0 }}
 {{- $gal := slice }}
 {{- $colWidth := .Get 1}}
@@ -13,24 +12,21 @@
 {{- $itemImg := resources.Get (path.Join "images" .file) -}}
 {{- if $itemImg }}
 {{- $anchor := default "Smart" .anchor}}
-{{- $thumbImg := $itemImg -}}
-{{- if not $skipImageProcessing }}
-{{- $thumbImg = $itemImg.Fill (printf "%.0fx%.0f webp q70 %s" $imgWidth $imgWidth $anchor) }}
-{{- end }}
+{{- $thumbImg := $itemImg.Fill (printf "%.0fx%.0f webp q70 %s" $imgWidth $imgWidth $anchor) }}
 {{- $largeImg := $itemImg -}}
 {{- $mediumImg := $itemImg -}}
 {{- $smallImg := $itemImg -}}
-{{- if and (not $skipImageProcessing) (gt $itemImg.Width 1600) }}
+{{- if gt $itemImg.Width 1600 }}
 {{- $largeImg = $itemImg.Resize "1600x webp q80" }}
-{{- else if not $skipImageProcessing }}
+{{- else }}
 {{- $largeImg = $itemImg.Resize (printf "%dx webp q80" $itemImg.Width) }}
 {{- end }}
-{{- if and (not $skipImageProcessing) (gt $itemImg.Width 960) }}
+{{- if gt $itemImg.Width 960 }}
 {{- $mediumImg = $itemImg.Resize "960x webp q76" }}
 {{- else }}
 {{- $mediumImg = $largeImg }}
 {{- end }}
-{{- if and (not $skipImageProcessing) (gt $itemImg.Width 640) }}
+{{- if gt $itemImg.Width 640 }}
 {{- $smallImg = $itemImg.Resize "640x webp q72" }}
 {{- else }}
 {{- $smallImg = $mediumImg }}

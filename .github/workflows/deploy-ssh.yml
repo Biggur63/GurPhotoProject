@@ -20,7 +20,6 @@ jobs:
       HUGO_VERSION: 0.160.1
       TZ: Europe/Moscow
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-      HUGO_SKIP_IMAGE_PROCESSING: true
     steps:
       - name: Checkout
         uses: actions/checkout@v5

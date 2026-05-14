@@ -1,5 +1,4 @@
 {{ $page := . }}
-{{- $skipImageProcessing := eq (os.Getenv "HUGO_SKIP_IMAGE_PROCESSING") "true" -}}
 <section class="services{{ if not $page.IsHome }} services--aside{{ end }}">
     {{ if $page.IsHome }}
     <div class="width-wrapper">
@@ -12,9 +11,7 @@
                 {{- $scardBg := .Page.Resources.GetMatch .Page.Params.cover_img }}
                 <li class="services__item">
                     {{- if $scardBg }}
-                    {{- if not $skipImageProcessing }}
                     {{- $scardBg = $scardBg.Resize "320x webp q68" }}
-                    {{- end }}
                     <a href="{{ .URL }}"
                         class="scard scard--bg"
                         style="--scard-bg: url('{{ $scardBg.RelPermalink }}')">
