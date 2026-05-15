@@ -117,6 +117,12 @@ function Push-WithGitHubApiFallback {
         -Method Get `
         -Uri "https://api.github.com/repos/$Repo/git/ref/heads/$Branch"
     $parentSha = $remoteRef.object.sha
+    $localHead = (Invoke-Git rev-parse HEAD)[0]
+
+    if ($parentSha -eq $localHead) {
+        Write-Host "Remote branch already points to local HEAD."
+        return
+    }
 
     $remoteCommit = Invoke-GitHubApi `
         -Method Get `
